@@ -4,6 +4,11 @@
     box-sizing: border-box;
     /* background: #000;*/
   } 
+  .container{
+    display: grid;
+    place-items: center;
+    min-height: 100vh;
+  }
   h1{
     text-align:center;
     margin-bottom:50px;
