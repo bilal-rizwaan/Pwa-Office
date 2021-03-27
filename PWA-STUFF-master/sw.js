@@ -33,13 +33,13 @@
 
     //     //Install
     self.addEventListener('install', event =>{
-        // console.log("Install",e);
+        console.log("Install",event);
         event.waitUntill(
             caches.open("app")
             .then(cache => {
                 return cache.addAll(files)
                 .catch(error => {
-                    // console.error("Error adding files to", error);
+                    console.error("Error adding files to", error);
                 })
                 })
         )
@@ -55,7 +55,7 @@
             return Promise.all(
                 cacheName.map(cache=>{
                     if(cache !== app){
-                        // console.info("Deleting Old Cache", cache);
+                        console.info("Deleting Old Cache", cache);
                         return caches.delete(cache);
                     }
                 })
@@ -67,7 +67,7 @@
 
     //   ///Fetch
     self.addEventListener('fetch',event => {
-        // console.info("SW fetch",event.request.url);
+        console.info("SW fetch",event.request.url);
         event.respondWith(
             caches.match(event.request)
             .then(response => {
